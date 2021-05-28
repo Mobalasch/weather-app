@@ -1,8 +1,8 @@
 <template>
   <div>
     <h2>{{ dayFormat }}</h2>
-    <div>{{ day.temp.min }} <i class="fas fa-temperature-low"></i></div>
-    <div>{{ day.temp.max }} <i class="fas fa-temperature-high"></i></div>
+    <div>{{ day.temp.min }} <i class="min fas fa-temperature-low"></i></div>
+    <div>{{ day.temp.max }} <i class="max fas fa-temperature-high"></i></div>
   </div>
 </template>
 

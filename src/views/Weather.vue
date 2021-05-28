@@ -5,8 +5,8 @@
     <div class="current">
       <div class="location">{{ "Location: " + weather.timezone }}</div>
       <div class="cur-date">{{ momentUnix }}</div>
-      <div>{{ currentDay.temp.min }} <i class="fas fa-temperature-low"></i></div>
-      <div>{{ currentDay.temp.max }} <i class="fas fa-temperature-high"></i></div>
+      <div>{{ currentDay.temp.min }} <i class="min fas fa-temperature-low"></i></div>
+      <div>{{ currentDay.temp.max }} <i class="max fas fa-temperature-high"></i></div>
       <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
       <div class="icon"><img :src="iconUrl" /></div>
       <div class="temp">Temperature: {{ currentTemp }}</div>
