@@ -5,8 +5,14 @@
     <div class="current">
       <div class="location">{{ "Location: " + weather.timezone }}</div>
       <div class="cur-date">{{ momentUnix }}</div>
-      <div>{{ currentDay.temp.min }} <i class="min fas fa-temperature-low"></i></div>
-      <div>{{ currentDay.temp.max }} <i class="max fas fa-temperature-high"></i></div>
+      <div>
+        {{ Math.round(currentDay.temp.min) }}
+        <i class="min fas fa-temperature-low"></i>
+      </div>
+      <div>
+        {{ Math.round(currentDay.temp.max) }}
+        <i class="max fas fa-temperature-high"></i>
+      </div>
       <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
       <div class="icon"><img :src="iconUrl" /></div>
       <div class="temp">Temperature: {{ currentTemp }}</div>
@@ -14,7 +20,7 @@
       <div class="cloudy">Cloudy: {{ currentClouds }}</div>
       <div v-if="this.weather.rain" class="rain">Rain: {{ currentRain }}</div>
       <div class="wind-speed">Wind: {{ currentWindSpeed }}</div>
-      <TemperatureChart :hourly="hourly"/>
+      <TemperatureChart :hourly="hourly" />
     </div>
     <div class="hourly"></div>
     <!-- Hourly Komponente mit z.B. Grafik für Temperatur und Niederschlag oder Side Scrolling -->
