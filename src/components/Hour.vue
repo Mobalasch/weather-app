@@ -1,17 +1,22 @@
 <template>
-  <div class="hourContainer">
-    <div class="hourFormat">
-      <h2>{{ hourFormat }}</h2>
+  <div class="hourContainer" @click="toggleAccordion">
+    <div class="hourHeader">
+      <div class="hourFormat">
+        <h2>{{ hourFormat }}</h2>
+      </div>
+      <div class="hourlyTemp">Temperature: {{ hourlyTemp }}</div>
+      <div class="hourlyIcon"><img :src="iconUrlHour" /></div>
+      <div class="hourlyWeather">{{ hour.weather[0].main }}</div>
     </div>
-    <div class="hourlyTemp">Temperature: {{ hourlyTemp }}</div>
-    <div class="hourlyIcon"><img :src="iconUrlHour" /></div>
-    <div class="hourlyWeather">{{ hour.weather[0].main }}</div>
-    <div class="hourlyCloudy">Cloudy: {{ hourlyClouds }}</div>
-    <div class="hourlyPop">
-      Chance of Rain {{ hourlyPop }} v-if="hour.rain" class="hourlyRain">Rain:
-      {{ hourlyRain }}
+    <div class="hourBody" v-show="accordionOpen">
+      <div class="hourlyCloudy">Cloudy: {{ hourlyClouds }}</div>
+      <div class="hourlyPop">
+        Chance of Rain {{ hourlyPop }}
+        <!-- v-if="hour.rain" class="hourlyRain">Rain:
+        {{ hourlyRain }} -->
+      </div>
+      <div class="hourlyWind">Wind: {{ hourlyWindSpeed }}</div>
     </div>
-    <div class="hourlyWind">Wind: {{ hourlyWindSpeed }}</div>
   </div>
 </template>
 
@@ -19,11 +24,14 @@
 import moment from "moment";
 export default {
   props: ["hour"],
-
+  data() {
+    return {
+      accordionOpen: false,
+    };
+  },
   created() {
     console.log(this.hour);
   },
-
   computed: {
     iconUrlHour() {
       return `https://openweathermap.org/img/wn/${this.hour.weather[0].icon}@2x.png`;
@@ -45,6 +53,11 @@ export default {
     },
     hourFormat() {
       return moment.unix(this.hour.dt).format("HH:mm");
+    },
+  },
+  methods: {
+    toggleAccordion() {
+      this.accordionOpen = !this.accordionOpen;
     },
   },
 };
