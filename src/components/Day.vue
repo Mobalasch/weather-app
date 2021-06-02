@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="dayContainer">
     <div class="dayFormat">
       <h2>{{ dayFormat }}</h2>
     </div>

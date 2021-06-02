@@ -27,11 +27,6 @@ h2 {
   text-transform: uppercase;
 }
 
-hr {
-  border: none;
-  border-top: 1px solid white;
-}
-
 .min {
   color: blue;
 }
@@ -40,9 +35,33 @@ hr {
   color: red;
 }
 
-.container {
+.dayContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.dayFormat {
+  text-align: left;
+  width: 33%;
+}
+
+.hourContainer {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .hourFormat, .hourlyTemp, .hourlyIcon, .hourlyCloudy, .hourlyPop, .hourlyRain {
+ text-align: left;
+ width: auto
+} */
+
+
+
+/* hr {
+  border: none;
+  border-top: 1px solid white;
+}
+ */
