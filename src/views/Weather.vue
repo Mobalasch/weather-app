@@ -13,6 +13,7 @@
         <!--  <div class="location">{{ "Location: " + weather.timezone }}</div> -->
         <div class="location" v-if="location">{{ cityName }}</div>
         <div class="cur-date">{{ momentUnix }}</div>
+        <div class="temp">Temperature: {{ currentTemp }}</div>
         <div>
           {{ Math.round(currentDay.temp.min) }}
           <i class="min fas fa-temperature-low"></i>
@@ -21,9 +22,8 @@
           {{ Math.round(currentDay.temp.max) }}
           <i class="max fas fa-temperature-high"></i>
         </div>
-        <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
         <div class="icon"><img :src="iconUrl" /></div>
-        <div class="temp">Temperature: {{ currentTemp }}</div>
+        <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
         <button class="dropdown" @click="toggleDropdown">
           <i class="fa fa-caret-down" aria-hidden="true"></i>
         </button>
