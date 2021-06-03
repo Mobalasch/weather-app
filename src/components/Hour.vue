@@ -1,5 +1,5 @@
 <template>
-  <div class="hourContainer" @click="toggleAccordion">
+  <div class="hourContainer">
     <div class="hourHeader">
       <div class="hourFormat">
         <h2>{{ hourFormat }}</h2>
@@ -7,8 +7,11 @@
       <div class="hourlyTemp">Temperature: {{ hourlyTemp }}</div>
       <div class="hourlyIcon"><img :src="iconUrlHour" /></div>
       <div class="hourlyWeather">{{ hour.weather[0].main }}</div>
+      <button class="dropdown" @click="toggleDropdown">
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
     </div>
-    <div class="hourBody" v-show="accordionOpen">
+    <div class="hourBody" v-show="dropdownOpen">
       <div class="hourlyCloudy">Cloudy: {{ hourlyClouds }}</div>
       <div class="hourlyPop">
         Chance of Rain {{ hourlyPop }}
@@ -26,7 +29,7 @@ export default {
   props: ["hour"],
   data() {
     return {
-      accordionOpen: false,
+      dropdownOpen: false,
     };
   },
   created() {
@@ -56,8 +59,8 @@ export default {
     },
   },
   methods: {
-    toggleAccordion() {
-      this.accordionOpen = !this.accordionOpen;
+    toggleDropdown() {
+      this.dropdownOpen = !this.dropdownOpen;
     },
   },
 };
