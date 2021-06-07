@@ -60,8 +60,17 @@ h2 {
   cursor: pointer;
 }
 
-.dropdown,
+.dropdown-open,
 .currentBody,
-.temperatureChart {
+.temperatureChart,
+.current {
   margin-top: 10px;
+}
+
+.dropdown-close {
+  margin-bottom: 10px;
+}
+
+.button-search {
+  margin-top: 5px;
 }

@@ -7,11 +7,18 @@
       <div class="hourlyTemp">Temperature: {{ hourlyTemp }}</div>
       <div class="hourlyIcon"><img :src="iconUrlHour" /></div>
       <div class="hourlyWeather">{{ hour.weather[0].main }}</div>
-      <button class="dropdown" @click="toggleDropdown">
+      <button
+        class="dropdown-open"
+        @click="toggleDropdown"
+        v-show="!dropdownOpen"
+      >
         <i class="fa fa-caret-down" aria-hidden="true"></i>
       </button>
     </div>
     <div class="hourBody" v-show="dropdownOpen">
+      <button class="dropdown-close" @click="toggleDropdown">
+        <i class="fa fa-caret-up"></i>
+      </button>
       <div class="hourlyCloudy">Cloudy: {{ hourlyClouds }}</div>
       <div class="hourlyPop">
         Chance of Rain {{ hourlyPop }}

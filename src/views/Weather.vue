@@ -2,11 +2,20 @@
   <div v-if="weather" class="weather">
     <h1>Weather App</h1>
     <div>
-      <input type="text" v-model="placeInput" />
+      <label class="input" for="search">Location Search: </label>
+      <input
+        type="text"
+        name="search"
+        placeholder="Stattersdorf"
+        v-model="placeInput"
+      />
+      <br />
       {{ placeInput }}
-      <button @click="searchPlace">Place Suchen</button>
+      <br />
+      <button class="button-search" @click="getSearchedCityName(placeInput)">
+        Search
+      </button>
     </div>
-
     <div v-if="error">{{ error }}</div>
     <div class="currentHeader">
       <div class="current">
@@ -24,11 +33,18 @@
         </div>
         <div class="icon"><img :src="iconUrl" /></div>
         <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
-        <button class="dropdown" @click="toggleDropdown">
+        <button
+          class="dropdown-open"
+          @click="toggleDropdown"
+          v-show="!dropdownOpen"
+        >
           <i class="fa fa-caret-down" aria-hidden="true"></i>
         </button>
       </div>
       <div class="currentBody" v-show="dropdownOpen">
+        <button class="dropdown-close" @click="toggleDropdown">
+          <i class="fa fa-caret-up"></i>
+        </button>
         <div class="hum">Humidity: {{ currentHum }}</div>
         <div class="cloudy">Cloudy: {{ currentClouds }}</div>
         <div v-if="this.weather.rain" class="rain">Rain: {{ currentRain }}</div>
@@ -168,12 +184,13 @@ export default {
     },
     getCurrentCityName(lat, lon) {
       const geoApiKey = process.env.VUE_APP_GEO_API_KEY;
+      //reverse geoCoding
       // let geoApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=LAT+LNG&key=b8a5934b13ce40bd97503cd457e1b5b8`;
-      let geoApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${geoApiKey}`;
-      console.log(geoApiUrl);
+      let geoReverseApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${geoApiKey}`;
+      console.log(geoReverseApiUrl);
 
       axios
-        .get(geoApiUrl)
+        .get(geoReverseApiUrl)
         .then((response) => {
           this.location = response.data;
           console.log(response.data);
@@ -182,8 +199,22 @@ export default {
           this.error = e.message;
         });
     },
-    searchPlace() {
-      console.log(this.placeInput);
+    // Location Search
+    getSearchedCityName(placeInput) {
+      const geoApiKey = process.env.VUE_APP_GEO_API_KEY;
+      // forward geoCoding
+      let geoForwardApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${placeInput}&key=${geoApiKey}`;
+
+      axios
+        .get(geoForwardApiUrl)
+        .then((response) => {
+          this.location = response.data;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          this.error = e.message;
+        });
+      return (this.placeInput = "");
     },
   },
 };
