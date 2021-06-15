@@ -46,14 +46,25 @@ h2 {
   width: 33%;
 }
 
-.hourContainer {
+.hourFormat {
+  display: flex;
+}
+
+.hourlyIcon {
+  display: flex;
+}
+
+.hourlyTemp {
+  display: flex;
+}
+/* .hourContainer {
   display: flex;
   text-align: left;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #fff;
   padding-bottom: 20px;
-}
+} */
 
 .active,
 .dropdown:hover {

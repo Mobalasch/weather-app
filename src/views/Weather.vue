@@ -1,12 +1,12 @@
 <template>
   <div v-if="weather" class="weather">
     <h1>Weather App</h1>
-    <div>
-      <label class="input" for="search">Location Search: </label>
+    <div v-if="location" class="location">
+      <label for="search">Location Search: </label>
       <input
         type="text"
-        name="search"
-        placeholder="Stattersdorf"
+        name="location-search"
+        :placeholder="cityName"
         v-model="placeInput"
       />
       <br />
@@ -117,8 +117,20 @@ export default {
       // let string = "Stattersdorf, 3100 St. Pölten, Österreich"
       // let stringArray = string.split(' ')
       // stringArray[0] => asdf
+      // return this.location.results[0].formatted.split(",")[0];
 
-      return this.location.results[0].formatted.split(",")[0];
+      const components = this.location.results[0].components;
+
+      //  city, town, township, village
+      if (components.city) {
+        return components.city;
+      } else if (components.town) {
+        return components.town;
+      } else if (components.township) {
+        return components.township;
+      } else {
+        return components.village;
+      }
     },
     iconUrl() {
       return `https://openweathermap.org/img/wn/${this.weather.current.weather[0].icon}@2x.png`;
@@ -202,6 +214,7 @@ export default {
     // Location Search
     getSearchedCityName(placeInput) {
       const geoApiKey = process.env.VUE_APP_GEO_API_KEY;
+
       // forward geoCoding
       let geoForwardApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${placeInput}&key=${geoApiKey}`;
 
@@ -209,12 +222,14 @@ export default {
         .get(geoForwardApiUrl)
         .then((response) => {
           this.location = response.data;
-          console.log(response.data);
+          const geoApiLat = this.location.results[0].geometry.lat;
+          const geoApiLon = this.location.results[0].geometry.lng;
+          this.getWeatherData(geoApiLat, geoApiLon);
         })
         .catch((e) => {
           this.error = e.message;
         });
-      return (this.placeInput = "");
+      this.placeInput = "";
     },
   },
 };
