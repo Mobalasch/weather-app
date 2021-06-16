@@ -1,7 +1,7 @@
 <template>
   <div class="dayContainer">
     <div class="dayFormat">
-      <h2>{{ dayFormat }}</h2>
+      {{ dayFormat }}
     </div>
     <div class="dailyIcon"><img :src="iconUrlDay" /></div>
     <div class="tempMin">

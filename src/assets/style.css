@@ -3,27 +3,18 @@ html {
 }
 
 body {
-  color: #161616;
+  color: black;
   padding: 2em;
   margin: 0 auto;
-  color: #161616;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-color: currentColor;
 }
 
 h1 {
   margin-bottom: 0.5em;
-  color: #fff;
+  color: black;
   font-weight: 100;
   font-size: 2.5em;
-  text-transform: uppercase;
-}
-
-h2 {
-  color: #fff;
-  font-weight: 100;
-  font-size: 1.5em;
   text-transform: uppercase;
 }
 
@@ -35,53 +26,83 @@ h2 {
   color: red;
 }
 
+.location {
+  font-weight: bold;
+}
+
 .dayContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid red;
 }
 
 .dayFormat {
   text-align: left;
-  width: 33%;
+  width: 30%;
+  font-weight: bold;
 }
 
-.hourFormat {
+.hourly {
   display: flex;
+  width: 100%;
+  overflow: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
-.hourlyIcon {
-  display: flex;
+.hourly::-webkit-scrollbar-thumb {
+  background: #ec6e4c;
+  border-radius: 30px;
 }
 
-.hourlyTemp {
-  display: flex;
+.hourly::-webkit-scrollbar-track {
+  background: #555555;
+  border-radius: 30px;
 }
-/* .hourContainer {
-  display: flex;
-  text-align: left;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 20px;
-} */
+
+.hourly > div {
+  margin: 1rem;
+}
 
 .active,
-.dropdown:hover {
+.dropdown-open,
+.dropdown-close,
+.button-search {
   cursor: pointer;
 }
 
-.dropdown-open,
-.currentBody,
-.temperatureChart,
-.current {
-  margin-top: 10px;
+.currentBody {
+  white-space: nowrap;
 }
 
+.dropdown-open,
 .dropdown-close {
-  margin-bottom: 10px;
+  margin: 5px 0;
 }
 
 .button-search {
-  margin-top: 5px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 4px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+@media (min-width: 40rem) {
+  .button-search {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+  }
 }

@@ -10,8 +10,6 @@
         v-model="placeInput"
       />
       <br />
-      {{ placeInput }}
-      <br />
       <button class="button-search" @click="getSearchedCityName(placeInput)">
         Search
       </button>
@@ -19,7 +17,6 @@
     <div v-if="error">{{ error }}</div>
     <div class="currentHeader">
       <div class="current">
-        <!--  <div class="location">{{ "Location: " + weather.timezone }}</div> -->
         <div class="location" v-if="location">{{ cityName }}</div>
         <div class="cur-date">{{ momentUnix }}</div>
         <div class="temp">Temperature: {{ currentTemp }}</div>
@@ -32,7 +29,6 @@
           <i class="max fas fa-temperature-high"></i>
         </div>
         <div class="icon"><img :src="iconUrl" /></div>
-        <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
         <button
           class="dropdown-open"
           @click="toggleDropdown"
@@ -45,6 +41,7 @@
         <button class="dropdown-close" @click="toggleDropdown">
           <i class="fa fa-caret-up"></i>
         </button>
+        <div class="weather-desc">{{ weather.current.weather[0].main }}</div>
         <div class="hum">Humidity: {{ currentHum }}</div>
         <div class="cloudy">Cloudy: {{ currentClouds }}</div>
         <div v-if="this.weather.rain" class="rain">Rain: {{ currentRain }}</div>
@@ -54,23 +51,14 @@
         <TemperatureChart :hourly="hourly" />
       </div>
     </div>
-    <div class="hourly"></div>
     <!-- Hourly Komponente mit z.B. Grafik für Temperatur und Niederschlag oder Side Scrolling -->
-    <div v-for="hour in hourly" :key="hour.dt">
-      <Hour :hour="hour" />
+    <div class="hourly">
+      <Hour v-for="hour in hourly" :key="hour.dt" :hour="hour" />
     </div>
-    <div class="daily"></div>
     <!-- Daily -->
-
-    <!-- Day Components -->
-    <div v-for="day in daily" :key="day.dt">
-      <Day :day="day" />
+    <div class="daily">
+      <Day v-for="day in daily" :key="day.dt" :day="day" />
     </div>
-
-    <!-- 
-    <div v-for="(day, index) in daily" :key="index">
-    </div>
-    -->
   </div>
 </template>
 
@@ -112,13 +100,6 @@ export default {
   },
   computed: {
     cityName() {
-      // conditions je nach dem, welche werte vorhanden sind.
-      // ersten teil bis zum ersten komma bekommen
-      // let string = "Stattersdorf, 3100 St. Pölten, Österreich"
-      // let stringArray = string.split(' ')
-      // stringArray[0] => asdf
-      // return this.location.results[0].formatted.split(",")[0];
-
       const components = this.location.results[0].components;
 
       //  city, town, township, village

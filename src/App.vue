@@ -1,15 +1,10 @@
 <template>
-  <Navigation />
   <router-view />
 </template>
 
 <script>
-import Navigation from "@/components/Navigation";
-
 export default {
-  components: {
-    Navigation
-  },
+  components: {},
 };
 </script>
 
@@ -19,6 +14,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #fff;
+  color: black;
 }
 </style>

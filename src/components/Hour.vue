@@ -4,28 +4,28 @@
       <div class="hourFormat">
         {{ hourFormat }}
       </div>
-      <!--  <div class="hourlyIcon"><img :src="iconUrlHour" /></div>
-      <div class="hourlyTemp">{{ hourlyTemp }}</div> -->
-      <!-- <button
+      <div class="hourlyIcon"><img :src="iconUrlHour" /></div>
+      <div class="hourlyTemp">{{ hourlyTemp }}</div>
+      <button
         class="dropdown-open"
         @click="toggleDropdown"
         v-show="!dropdownOpen"
       >
         <i class="fa fa-caret-down" aria-hidden="true"></i>
-      </button> -->
-      <!-- </div>
+      </button>
+    </div>
     <div class="hourBody" v-show="dropdownOpen">
       <button class="dropdown-close" @click="toggleDropdown">
         <i class="fa fa-caret-up"></i>
       </button>
       <div class="hourlyWeather">{{ hour.weather[0].main }}</div>
       <div class="hourlyCloudy">Cloudy: {{ hourlyClouds }}</div>
-      <div class="hourlyPop">
-        Chance of Rain {{ hourlyPop }} -->
-      <!-- v-if="hour.rain" class="hourlyRain">Rain:
-        {{ hourlyRain }} -->
-      <!--  </div>
-      <div class="hourlyWind">Wind: {{ hourlyWindSpeed }}</div> -->
+      <div v-if="rain" class="rain">
+        Chance of Rain {{ hourlyPop }}
+        v-if="hour.rain" class="hourlyRain">Rain:
+        {{ hourlyRain }}
+      </div>
+      <div class="hourlyWind">Wind: {{ hourlyWindSpeed }}</div>
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
   props: ["hour"],
   data() {
     return {
+      rain: null,
       dropdownOpen: false,
     };
   },
