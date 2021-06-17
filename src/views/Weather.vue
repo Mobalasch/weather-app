@@ -1,7 +1,7 @@
 <template>
   <div v-if="weather" class="weather">
     <h1>Weather App</h1>
-    <div v-if="location" class="location">
+    <div v-if="location">
       <label for="search">Location Search: </label>
       <input
         type="text"

@@ -18,6 +18,11 @@ h1 {
   text-transform: uppercase;
 }
 
+input {
+  text-transform: uppercase;
+  border: 1px solid hsl(0, 0%, 65%);
+}
+
 .min {
   color: blue;
 }
@@ -27,6 +32,7 @@ h1 {
 }
 
 .location {
+  text-transform: uppercase;
   font-weight: bold;
 }
 
@@ -78,12 +84,14 @@ h1 {
 
 .dropdown-open,
 .dropdown-close {
+  background-color: #4caf50;
+  border-color: #555555;
   margin: 5px 0;
 }
 
 .button-search {
   background-color: #4caf50;
-  border: none;
+  border-color: #555555;
   color: white;
   padding: 4px 16px;
   text-align: center;
@@ -96,7 +104,7 @@ h1 {
 @media (min-width: 40rem) {
   .button-search {
     background-color: #4caf50;
-    border: none;
+    border-color: #555555;
     color: white;
     padding: 8px 32px;
     text-align: center;
