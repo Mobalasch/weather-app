@@ -2,7 +2,6 @@
   <div v-if="weather" class="weather">
     <h1>Weather App</h1>
     <div v-if="location">
-      <label for="search"></label>
       <input
         type="text"
         name="location-search"
