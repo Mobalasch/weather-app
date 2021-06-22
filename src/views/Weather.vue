@@ -2,16 +2,16 @@
   <div v-if="weather" class="weather">
     <h1>Weather App</h1>
     <div v-if="location">
-      <label for="search">Location Search: </label>
+      <label for="search"></label>
       <input
         type="text"
         name="location-search"
         :placeholder="cityName"
         v-model="placeInput"
       />
-      <br />
       <button class="button-search" @click="getSearchedCityName(placeInput)">
-        Search
+        <i class="fas fa-search"></i>
+        City search
       </button>
     </div>
     <div v-if="error">{{ error }}</div>

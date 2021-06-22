@@ -19,8 +19,21 @@ h1 {
 }
 
 input {
-  text-transform: uppercase;
   border: 1px solid hsl(0, 0%, 65%);
+  padding: 4px 8px;
+  font-size: 14px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+@media (min-width: 40rem) {
+  input {
+    border: 1px solid hsl(0, 0%, 65%);
+    padding: 5px 9px;
+    font-size: 16px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
 }
 
 .min {
@@ -84,33 +97,47 @@ input {
 
 .dropdown-open,
 .dropdown-close {
-  background-color: #4caf50;
-  border-color: #555555;
-  margin: 5px 0;
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .dropdown-open,
+  .dropdown-close {
+    display: inline;
+    background-color: #2b91e8;
+    border: none;
+    margin: 5px 0;
+  }
 }
 
 .button-search {
-  background-color: #4caf50;
-  border-color: #555555;
+  background-color: #2b91e8;
+  border-width: 1px;
   color: white;
-  padding: 4px 16px;
+  padding: 4px 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 10px 0;
+  white-space: nowrap;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 @media (min-width: 40rem) {
   .button-search {
-    background-color: #4caf50;
-    border-color: #555555;
+    background-color: #2b91e8;
+    border-width: 1px;
     color: white;
-    padding: 8px 32px;
+    padding: 5px 9px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 10px 0;
+    white-space: nowrap;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 }
